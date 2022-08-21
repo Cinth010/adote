@@ -1,0 +1,44 @@
+* {
+  box-sizing: border-box;
+}
+
+body {
+  text-align: center;
+  background-color: aliceblue;
+}
+
+.container {
+  display: flex;
+  margin-inline: auto;
+  overflow-x: scroll;
+  padding: 24px;
+  width: 350px;
+  scroll-snap-type: x mandatory;
+  scroll-padding: 24px;
+  border-radius: 12px;
+  gap: 12px;
+}
+
+.container .item {
+  flex: 0 0 100%;
+  padding: 24px;
+  border-radius: 8px;
+  scroll-snap-align: start;
+}
+
+.item {
+  background-color: aqua;
+}
+
+ul li {
+  margin: 10px;
+  text-align: justify;
+}
+
+button {
+  padding: 10px;
+}
+
+.input-pet {
+  padding: 10px;
+}

@@ -5,12 +5,68 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <link rel="stylesheet" href="style.css" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@300&family=Lexend+Deca:wght@300&display=swap"
+      rel="stylesheet"
+    />
     <title>Cadastro Pet</title>
   </head>
   <body>
-    <script src="addpet.js"></script>
-    <h1>Adote um pet</h1>
-    
+    <div class="navbar"></div>
+    <h1 class="title">Encontre um amigo!</h1>
+    <h2>Cadastro</h2>
+    <form
+      id="form_pet"
+      style="
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+        width: 350px;
+        margin-inline: auto;
+      "
+    >
+      <input
+        type="text"
+        id="name_pet"
+        class="input-pet"
+        placeholder="Nome do Pet"
+        required
+      />
 
+      <input
+        type="text"
+        id="description"
+        class="input-pet"
+        placeholder="descrição"
+        required
+      />
+
+      <input
+        type="text"
+        id="guardian_name"
+        class="input-pet"
+        placeholder="Nome do responsavel"
+        required
+      />
+
+      <input
+        type="number"
+        class="input-pet"
+        id="guardian_contact"
+        placeholder="Telefone para contato"
+        required
+      />
+
+      <div style="display: block">
+        Foto:
+        <input type="file" id="photo" placeholder="foto" required />
+      </div>
+    </form>
+    <br />
+    <button type="submit" id="savePet">Enviar</button>
+    <p id="alerta"></p>
+    <script src="main.js"></script>
   </body>
 </html>

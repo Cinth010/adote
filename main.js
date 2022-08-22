@@ -76,22 +76,33 @@ const savePetData = () => {
 
 // APRESENTANDO O PET EM FORMATO DE DIV
 const creatPetItem = pet => {
-  const newPetItem = document.createElement('div')
+  const newPetItem = document.createElement('th')
   newPetItem.innerHTML = `
-      <div class="item">
-        <h4 id="nome">${pet.nome}</h4>
-        <img id="foto" scr="${pet.foto}" width="200px" height="200px"></div>
-        <p id="desscricao"> ${pet.descricao}</p>
-        <p id="responsavel">${pet.responsavel}</p>
-        <button id="telefoneResponsavel"> <a href="https://wa.me/${pet.telefoneResponsável}">Entre em contato</a></button>
-      </div>
+  <th>
+  <div class="pet-info">
+    <img id="foto" src="${pet.foto}" width="290px" height="316px" />
+    <h4>${pet.nome}</h4>
+    <p>
+      ${pet.descricao}
+    </p>
+    <p><span>Responsável:</span> ${pet.responsavel}</p>
+    <a class="contato" href="https://wa.me/${pet.telefoneResponsável}">Entre em contato</a>
+  </div>
+</th>
   `
-  document.querySelector('.container').appendChild(newPetItem)
+  document.querySelector('.infos').appendChild(newPetItem)
+}
+
+//limpar divs
+const clearDivs = () => {
+  const div = document.querySelectorAll('#container item')
+  div.forEach(div => div.parentNode.removeChild())
 }
 
 //ATUALIZANDO DIV
 function updateAnimals() {
   const dataBasePets = readPet()
+
   dataBasePets.forEach(creatPetItem)
 }
 

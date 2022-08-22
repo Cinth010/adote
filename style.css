@@ -134,11 +134,15 @@ button {
 
 /* Modal Content/Box */
 .modal-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
   background-color: #fefefe;
   margin: 15% auto; /* 15% from the top and centered */
   padding: 20px;
   border-radius: 8px;
-  width: 95%;
+  width: max-content;
 }
 
 /* The Close Button */

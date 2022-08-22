@@ -31,6 +31,7 @@ const deletePet = index => {
 }
 
 //FUNCOES COM INTERAÇÃO
+var pet_image_url = ''
 // VALIANDANDO FORMULÁRIO
 const isValidFields = () => {
   return document.getElementById('form_pet').reportValidity()
@@ -41,22 +42,6 @@ const cleanFields = () => {
   const fields = document.querySelectorAll('.input-pet')
   fields.forEach(field => (field.value = ''))
 }
-
-//CAPUTURANDO INFORMAÇÕES DA IMAGEM
-var pet_image_url = ''
-
-document.querySelector('#photo').addEventListener('change', function () {
-  console.log(this.files)
-  //PARA ARMAZENAR ESSES ARQUVIOS PRECISA CONVERTER ESSA ENTRADA EM UM DATA URL
-  const reader = new FileReader()
-
-  reader.addEventListener('load', () => {
-    console.log(reader.result)
-    pet_image_url = reader.result
-    // ATRIBUINDO A DATA URL NA VARIÁVEL PET_IMAGE_URL
-  })
-  reader.readAsDataURL(this.files[0])
-})
 
 //SALVANDO INFORMAÇÕES DO FORMULÁRIO NO BANCO DE DADOS
 const savePetData = () => {
@@ -70,6 +55,7 @@ const savePetData = () => {
       telefoneResponsável: document.getElementById('guardian_contact').value
     }
     createDataBasePets(pet)
+    updateAnimals()
     cleanFields()
   }
 }
@@ -94,15 +80,15 @@ const creatPetItem = pet => {
 }
 
 //limpar divs
-const clearDivs = () => {
-  const div = document.querySelectorAll('#container item')
-  div.forEach(div => div.parentNode.removeChild())
+const clearTable = () => {
+  const colums = document.querySelectorAll('#tableInfo>tbody>tr th')
+  colums.forEach(colum => colum.parentNode.removeChild(colum))
 }
 
 //ATUALIZANDO DIV
 function updateAnimals() {
   const dataBasePets = readPet()
-
+  clearTable()
   dataBasePets.forEach(creatPetItem)
 }
 
@@ -110,3 +96,45 @@ function updateAnimals() {
 const addPet = document.getElementById('savePet')
 addPet.addEventListener('click', savePetData)
 addPet.addEventListener('click', updateAnimals)
+document.addEventListener('DOMContentLoaded', updateAnimals)
+//MODAL
+// Get the modal
+var modal = document.getElementById('myModal')
+
+// Get the button that opens the modal
+var btn = document.getElementById('myBtn')
+
+// Get the <span> element that closes the modal
+var span = document.getElementsByClassName('close')[0]
+
+// When the user clicks on the button, open the modal
+btn.onclick = function () {
+  modal.style.display = 'block'
+}
+
+// When the user clicks on <span> (x), close the modal
+span.onclick = function () {
+  modal.style.display = 'none'
+}
+
+// When the user clicks anywhere outside of the modal, close it
+window.onclick = function (event) {
+  if (event.target == modal) {
+    modal.style.display = 'none'
+  }
+}
+
+//CAPUTURANDO INFORMAÇÕES DA IMAGEM
+
+document.querySelector('#photo').addEventListener('change', function () {
+  console.log(this.files)
+  //PARA ARMAZENAR ESSES ARQUVIOS PRECISA CONVERTER ESSA ENTRADA EM UM DATA URL
+  const reader = new FileReader()
+
+  reader.addEventListener('load', () => {
+    console.log(reader.result)
+    pet_image_url = reader.result
+    // ATRIBUINDO A DATA URL NA VARIÁVEL PET_IMAGE_URL
+  })
+  reader.readAsDataURL(this.files[0])
+})

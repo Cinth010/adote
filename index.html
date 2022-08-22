@@ -16,13 +16,11 @@
   <body>
     <div class="navbar"></div>
     <h1 class="title">Encontre um amigo!</h1>
-      <div class="container">
-        <table>
-          <tr class="infos">
-            
-          </tr>
-        </table>
-        <!--
+    <div class="container">
+      <table id="tableInfo">
+        <tr class="infos"></tr>
+      </table>
+      <!--
          <div class="item">
             <img id="foto" scr="teste.jpg" width="200px" height="200px"></div>
             <h4 id="nome">Nome do Pet</h4>
@@ -30,60 +28,76 @@
             <p id="responsavel">Responsável</p>
             <button id="telefoneResponsavel">Entre em contato</button>
           </div>
-      --></div>
-   
+      -->
+    </div>
     <br />
-    <h2>Cadastro</h2>
-    <form
-      id="form_pet"
-      style="
-        display: flex;
-        flex-direction: column;
-        gap: 10px;
-        width: 350px;
-        margin-inline: auto;
-      "
-    >
-      <input
-        type="text"
-        id="name_pet"
-        class="input-pet"
-        placeholder="Nome do Pet"
-        required
-      />
+    <button id="myBtn">Cadastro de Animais</button>
+    <br />
 
-      <input
-        type="text"
-        id="description"
-        class="input-pet"
-        placeholder="descrição"
-        required
-      />
+    <!-- The Modal -->
+    <div id="myModal" class="modal">
+      <!-- Modal content -->
+      <div class="modal-content">
+        <span class="close">&times;</span>
+        <h2>Cadastro de Animais</h2>
+        <br />
+        <p style="font-size: 14px">
+          Insira todas as informações abaixo para disponibilizar um animal para
+          adoção.
+        </p>
 
-      <input
-        type="text"
-        id="guardian_name"
-        class="input-pet"
-        placeholder="Nome do responsavel"
-        required
-      />
+        <form
+          id="form_pet"
+          style="
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+            width: 350px;
+            margin-inline: auto;
+          "
+        >
+          <input
+            type="text"
+            id="name_pet"
+            class="input-pet"
+            placeholder="Nome do Pet"
+            required
+          />
 
-      <input
-        type="number"
-        class="input-pet"
-        id="guardian_contact"
-        placeholder="Telefone para contato"
-        required
-      />
+          <input
+            type="text"
+            id="description"
+            class="input-pet"
+            placeholder="descrição"
+            required
+          />
 
-      <div style="display: block">
-        Foto:
-        <input type="file" id="photo" placeholder="foto" required />
+          <input
+            type="text"
+            id="guardian_name"
+            class="input-pet"
+            placeholder="Nome do responsavel"
+            required
+          />
+
+          <input
+            type="number"
+            class="input-pet"
+            id="guardian_contact"
+            placeholder="Telefone para contato"
+            required
+          />
+
+          <div style="display: block; margin-top: 10px">
+            Foto:
+            <input type="file" id="photo" placeholder="foto" required />
+          </div>
+        </form>
+        <br />
+        <button type="submit" id="savePet">Cadastrar animal</button>
       </div>
-    </form>
-    <br />
-    <button type="submit" id="savePet">Enviar</button>
-    <p id="alerta"></p>
+    </div>
+
     <script src="main.js"></script>
   </body>
 </html>

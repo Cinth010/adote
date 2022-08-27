@@ -31,7 +31,10 @@ const deletePet = index => {
 }
 
 //FUNCOES COM INTERAÇÃO
+//Variável para capturar URL da Imagem
 var pet_image_url = ''
+var pet_qtd_database = 0
+
 // VALIANDANDO FORMULÁRIO
 const isValidFields = () => {
   return document.getElementById('form_pet').reportValidity()
@@ -54,14 +57,26 @@ const savePetData = () => {
       responsavel: document.getElementById('guardian_name').value,
       telefoneResponsável: document.getElementById('guardian_contact').value
     }
-    createDataBasePets(pet)
-    updateAnimals()
-    cleanFields()
+    const index = document.getElementById('name_pet').dataset.index
+    console.log('estou criando', index)
+    if (index == 'new') {
+      createDataBasePets(pet)
+      updateAnimals()
+      cleanFields()
+      closeModal()
+      pet_qtd_database++
+    } else {
+      console.log('estou editando', index)
+      updatePet(index, pet)
+      updateAnimals()
+      closeModal()
+      document.location.reload(true)
+    }
   }
 }
 
 // APRESENTANDO O PET EM FORMATO DE DIV
-const creatPetItem = pet => {
+const creatPetItem = (pet, index) => {
   const newPetItem = document.createElement('th')
   newPetItem.innerHTML = `
   <th>
@@ -73,10 +88,25 @@ const creatPetItem = pet => {
     </p>
     <p><span>Responsável:</span> ${pet.responsavel}</p>
     <a class="contato" href="https://wa.me/${pet.telefoneResponsável}">Entre em contato</a>
+    
+    <div style="display: flex; flex-direction=row; gap: 20px; font-size:14px; margin-inline: auto;">  
+    <button  class= "edit" id="edit ${index}"> Editar </button>
+    <button  class= "delete" id="delete ${index}" > Excluir  </button>
+    </div>
+   
   </div>
 </th>
   `
   document.querySelector('.infos').appendChild(newPetItem)
+}
+
+//NOPETS
+const noPets = pet_qtd_database => {
+  if (pet_qtd_database === 0) {
+    const info_pets = document.createElement('h2')
+    info_pets.innerHTML = `<h2> Nnehum pet Cadastrado</h2>`
+    document.getElementById('title').appendChild(info_pets)
+  }
 }
 
 //limpar divs
@@ -91,12 +121,55 @@ function updateAnimals() {
   clearTable()
   dataBasePets.forEach(creatPetItem)
 }
+console.log(pet_qtd_database)
+//PREENCHE CAMPOS AO EDITAR INFORMAÇÕES
+const fillFields = pet => {
+  document.getElementById('name_pet').value = pet.nome
+  document.getElementById('description').value = pet.descricao
+  document.getElementById('guardian_name').value = pet.responsavel
+  document.getElementById('guardian_contact').value = pet.telefoneResponsável
+  document.getElementById('name_pet').dataset.index = pet.index
+}
+
+//EDITAR INFORMAÇÕES DO PET
+const editPet = index => {
+  const pet = readPet()[index]
+  pet.index = index
+  fillFields(pet)
+  openModal()
+}
+
+//FUNÇÕES PARA EDITAR E EXCLUIR PET
+const editDeletePet = event => {
+  if (event.target.type == 'submit') {
+    const [action, index] = event.target.id.split(' ')
+    if (action == 'edit') {
+      editPet(index)
+    } else {
+      const pet = readPet()[index]
+      const response = confirm(
+        `Deseja realmente exluir o pet ${pet.nome}  da lista de adoção?`
+      )
+      if (response) {
+        deletePet(index)
+        updateAnimals()
+        pet_qtd_database - 1
+      }
+    }
+  }
+}
+
+updateAnimals()
 
 //EVENTOS
 const addPet = document.getElementById('savePet')
 addPet.addEventListener('click', savePetData)
 addPet.addEventListener('click', updateAnimals)
-document.addEventListener('DOMContentLoaded', updateAnimals)
+document.addEventListener('DOMContentLoaded', noPets())
+
+document
+  .querySelector('#tableInfo> tbody')
+  .addEventListener('click', editDeletePet)
 //MODAL
 // Get the modal
 var modal = document.getElementById('myModal')
@@ -108,13 +181,22 @@ var btn = document.getElementById('myBtn')
 var span = document.getElementsByClassName('close')[0]
 
 // When the user clicks on the button, open the modal
-btn.onclick = function () {
+
+const openModal = () => {
   modal.style.display = 'block'
+}
+
+const closeModal = () => {
+  modal.style.display = 'none'
+}
+
+btn.onclick = function () {
+  openModal()
 }
 
 // When the user clicks on <span> (x), close the modal
 span.onclick = function () {
-  modal.style.display = 'none'
+  closeModal()
 }
 
 // When the user clicks anywhere outside of the modal, close it
@@ -125,12 +207,10 @@ window.onclick = function (event) {
 }
 
 //CAPUTURANDO INFORMAÇÕES DA IMAGEM
-
 document.querySelector('#photo').addEventListener('change', function () {
   console.log(this.files)
   //PARA ARMAZENAR ESSES ARQUVIOS PRECISA CONVERTER ESSA ENTRADA EM UM DATA URL
   const reader = new FileReader()
-
   reader.addEventListener('load', () => {
     console.log(reader.result)
     pet_image_url = reader.result

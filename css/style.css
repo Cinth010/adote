@@ -5,13 +5,15 @@
 }
 
 body {
-  background-color: white;
+  background: linear-gradient(white 60%, #0dadc5 40%);
+  background-repeat: no-repeat;
   text-align: center;
   font-family: 'Inter', sans-serif;
   font-family: 'Lexend Deca', sans-serif;
 }
 
 .navbar {
+  position: relative;
   width: 100%;
   height: 50px;
   background-color: #0dadc5;
@@ -19,12 +21,15 @@ body {
 
 .title {
   margin-top: 20px;
-  margin-bottom: 20px;
+  margin-bottom: 10px;
   font-size: 20px;
   font-weight: 700;
 }
 
 .container {
+  background-color: white;
+  height: 680px;
+
   display: flex;
   flex-direction: column;
   margin-inline: auto;
@@ -46,12 +51,29 @@ body {
 .pet-info {
   display: flex;
   flex-direction: column;
-  gap: 20px;
+  gap: 16px;
   background-color: white;
   box-shadow: 1px 1px 9px 1px #008094;
 }
 
-h4 {
+.edit {
+  background: none;
+  border: none;
+  text-decoration: underline;
+  color: green;
+  font-size: 16px;
+}
+
+.delete {
+  background: none;
+  border: none;
+  text-decoration: underline;
+  color: red;
+  font-size: 16px;
+}
+
+h4,
+h2 {
   letter-spacing: 1px;
   font-size: 20px;
   text-align: justify;
@@ -100,13 +122,46 @@ button {
   border: none;
 }
 
-.input-pet {
-  padding: 16px;
-  margin-top: 10px;
+.input-group {
+  position: relative;
 }
 
-#form_pet {
-  padding: 20px;
+.input-pet {
+  width: 100%;
+  padding: 15px;
+  border: solid 1px #0dadc5;
+  border-radius: 4px;
+  font: inherit;
+  color: #000000;
+  background-color: transparent;
+  outline: 2px solid #fff;
+}
+
+.input-label {
+  position: absolute;
+  top: 0;
+  left: 0;
+  margin-top: 5px;
+  margin-left: 10px;
+  transform: translate(10px, 10px);
+  transition: transform 0.25s;
+}
+
+.input-pet:focus {
+  border: solid 2px #0dadc5;
+  transition: transform 0.25;
+}
+
+.input-pet:focus + .input-label,
+.input-pet:valid + .input-label {
+  transform: translate(-5px, -20px) scale(0.8);
+  color: #0dadc5;
+  padding-inline: 5px;
+  background-color: #ffffff;
+}
+
+.input-pet:is(:focus, :valid) {
+  out-color: #d1c5fc;
 }
 
 .contato,
@@ -119,7 +174,7 @@ button {
   background-color: #0dadc5;
   border-radius: 8px;
   font-size: 16;
-  padding: 12px 12px 12px 12px;
+  padding: 16px;
 }
 
 /* The Modal (background) */
@@ -141,19 +196,21 @@ button {
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: center;
   background-color: #fefefe;
-  margin: 15% auto; /* 15% from the top and centered */
+  margin: 0 auto;
   padding: 20px;
   border-radius: 8px;
   width: max-content;
+  height: 800px;
 }
 
 /* The Close Button */
 .close {
-  color: #aaa;
+  color: red;
   float: right;
-  font-size: 28px;
+  letter-spacing: 1px;
+  text-decoration: underline;
+  font-size: 14px;
   font-weight: bold;
 }
 

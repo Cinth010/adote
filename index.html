@@ -3,7 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <link rel="stylesheet" href="style.css" />
+    <link rel="stylesheet" href="./css/style.css" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -11,40 +11,38 @@
       href="https://fonts.googleapis.com/css2?family=Inter:wght@300&family=Lexend+Deca:wght@300&display=swap"
       rel="stylesheet"
     />
-    <title>Cadastro Pet</title>
+    <title>Adote</title>
   </head>
   <body>
-    <div class="navbar"></div>
+    <div class="navbar">
+      <img src="./img/adote-logo.png" width="32" height="32" style="margin-top: 10px">
+    </div>
     <h1 class="title">Encontre um amigo!</h1>
-    <div class="container">
+    <p style="text-align: center;"> Arraste para o lado - ></p> <br />
+
+    <div class="container" id="info-pets">
       <table id="tableInfo">
-        <tr class="infos"></tr>
+        <tr class="infos">
+
+        </tr>
       </table>
-      <!--
-         <div class="item">
-            <img id="foto" scr="teste.jpg" width="200px" height="200px"></div>
-            <h4 id="nome">Nome do Pet</h4>
-            <p id="desscricao"> descrição</p>
-            <p id="responsavel">Responsável</p>
-            <button id="telefoneResponsavel">Entre em contato</button>
-          </div>
-      -->
     </div>
     <br />
-    <button id="myBtn">Cadastro de Animais</button>
+    <button href="" id="myBtn">Cadastro de Animais</button>
     <br />
 
     <!-- The Modal -->
     <div id="myModal" class="modal">
       <!-- Modal content -->
       <div class="modal-content">
+        <img src="./img/adote-logo.png" alt="" height="48px" width="48px" />
+        <br />
         <div style="display: flex; flex-direction: row; gap: 20px">
           <h2>Cadastro de Animais</h2>
-          <span class="close"> &times;</span>
+          <!-- <span class="close"> &times;</span>-->
         </div>
-
         <br />
-        <p style="font-size: 14px">
+        <p style="font-size: 14px; margin-bottom: 30px">
           Insira todas as informações abaixo para <br />disponibilizar um animal
           para adoção.
         </p>
@@ -54,42 +52,45 @@
           style="
             display: flex;
             flex-direction: column;
-            gap: 10px;
+            gap: 20px;
             width: 350px;
             margin-inline: auto;
           "
         >
-          <input
-            type="text"
-            id="name_pet"
-            class="input-pet"
-            placeholder="Nome do Pet"
-            required
-          />
+          <div class="input-group">
+            <input
+              type="text"
+              data-index="new"
+              id="name_pet"
+              class="input-pet"
+              required
+            />
+            <label for="name_pet" class="input-label">Nome do Pet</label>
+          </div>
 
-          <input
-            type="text"
-            id="description"
-            class="input-pet"
-            placeholder="descrição"
-            required
-          />
+          <div class="input-group">
+            <input type="text" id="description" class="input-pet" required />
+            <label for="description" class="input-label">Descrição</label>
+          </div>
 
-          <input
-            type="text"
-            id="guardian_name"
-            class="input-pet"
-            placeholder="Nome do responsavel"
-            required
-          />
+          <div class="input-group">
+            <input type="text" id="guardian_name" class="input-pet" required />
+            <label for="guardian_name" class="input-label">
+              Respopnsável
+            </label>
+          </div>
 
-          <input
-            type="number"
-            class="input-pet"
-            id="guardian_contact"
-            placeholder="Telefone para contato"
-            required
-          />
+          <div class="input-group">
+            <input
+              type="number"
+              class="input-pet"
+              id="guardian_contact"
+              required
+            />
+            <label for="guardian_contact" class="input-label">
+              Whatsapp para contato
+            </label>
+          </div>
 
           <div style="display: block; margin-top: 10px">
             Foto:
@@ -98,12 +99,14 @@
         </form>
         <br />
         <button type="submit" id="savePet">Cadastrar animal</button>
+        <br />
+        <a class="close"> Cancelar </a>
       </div>
     </div>
-    <footer style="margin: 20px 20px 20px 20px">
+    <footer style="margin: 20px 20px 20px 20px; font-size: 10px">
       Javascript CRUD by
       <a href="https://cinth010.github.io/cinthia-links/">Cínthia Bezerra</a>
     </footer>
-    <script src="main.js"></script>
+    <script src="./js/main.js"></script>
   </body>
 </html>

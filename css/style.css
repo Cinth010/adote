@@ -22,8 +22,7 @@ body {
 
 .title {
   margin-top: 7px;
-  margin-bottom: 5px;
-  font-size: 20px;
+  font-size: 18px;
   font-weight: 700;
   color: #0dadc5;
 }
@@ -41,7 +40,7 @@ body {
   scroll-snap-type: x mandatory;
   scroll-padding: 24px;
   border-radius: 12px;
-  gap: 12px;
+  gap: 12x;
 }
 
 .container .pet-info {
@@ -54,7 +53,7 @@ body {
 .pet-info {
   display: flex;
   flex-direction: column;
-  gap: 10px;
+  gap: 8px;
   background-color: white;
   box-shadow: 1px 1px 9px 1px #008094;
 }
@@ -78,21 +77,21 @@ body {
 h4,
 h2 {
   letter-spacing: 1px;
-  font-size: 20px;
+  font-size: 18px;
   text-align: justify;
   color: #0dadc5;
 }
 
 .photo-pet {
-  width: 250px;
-  height: 350px;
+  width: 240px;
+  height: 340px;
   border-radius: 16px;
   object-fit: cover;
 }
 
 p {
   text-align: left;
-  font-size: 16px;
+  font-size: 14px;
   font-weight: 400;
   text-align: justify;
 }
@@ -180,8 +179,8 @@ button {
   letter-spacing: 1px;
   background-color: #0dadc5;
   border-radius: 8px;
-  font-size: 16;
-  padding: 14px;
+  font-size: 14;
+  padding: 12px;
 }
 
 /* The Modal (background) */

@@ -81,7 +81,7 @@ const creatPetItem = (pet, index) => {
   newPetItem.innerHTML = `
   <th>
   <div class="pet-info">
-    <img id="foto" src="${pet.foto}" width="290px" height="356px" />
+    <img id="foto" src="${pet.foto}" class="photo-pet" />
     <h4>${pet.nome}</h4>
     <p>
       ${pet.descricao}

@@ -3,53 +3,120 @@
   <head>
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <link rel="stylesheet" href="./css/style.css" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link
-      href="https://unpkg.com/boxicons@2.1.2/css/boxicons.min.css"
-      rel="stylesheet"
-    />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
       href="https://fonts.googleapis.com/css2?family=Inter:wght@300&family=Lexend+Deca:wght@300&display=swap"
       rel="stylesheet"
     />
-    <link rel="stylesheet" href="./css/adote.css" />
-    <title>Adote Plataforma de Adoção</title>
+    <title>Adote</title>
   </head>
   <body>
-    <header>
-      <nav class="navgation">
-        <a href="#" class="logo"> <img src="/img/logo.png" width="80px" /> </a>
-        <!--
-        <ul class="nav-menu">
-          <li class="nav-item"><a href="#">Home</a></li>
-          <li class="nav-item"><a href="#">Sobre</a></li>
-          <li class="nav-item"><a href="#">Acesse</a></li>
-        </ul>
-        <div class="menu">
-          <span class="bar"></span>
-          <span class="bar"></span>
-          <span class="bar"></span>
-        </div>
-        -->
-      </nav>
-    </header>
-    <main>
-      <section class="home">
-        <div class="home-text">
-          <h4 class="text-h4">Bem vindo</h4>
-          <h1 class="text-h1">Adote animais da sua região</h1>
-          <p>
-            Plataforma de animais disponíveis para adoção, pela população local.
-          </p>
-          <a href="index.html" class="btn">Conheça os pets disponíveis</a>
-        </div>
-        <div class="home-img"></div>
-        <img src="/img/animals.svg" alt="" />
-      </section>
-    </main>
+    <div class="navbar">
+      <img
+        src="./img/adote-logo.png"
+        width="24"
+        height="24"
+        style="margin: 5px"
+      />
+    </div>
+    <h1 class="title">Encontre um amigo!</h1>
+    <p style="text-align: center; margin-bottom: 5px; font-size: 14px">
+      Arraste para o lado - >
+    </p>
 
-    <script src="./js/adote.js"></script>
+    <div class="container" id="info-pets">
+      <table id="tableInfo">
+        <tr class="infos"></tr>
+      </table>
+    </div>
+
+    <br />
+    <button href="" id="myBtn">Cadastro de animais para adoção</button>
+    <br />
+
+    <!-- The Modal -->
+    <div id="myModal" class="modal">
+      <!-- Modal content -->
+      <div class="modal-content">
+        <img src="./img/adote-logo.png" alt="" height="48px" width="48px" />
+        <br />
+        <div style="display: flex; flex-direction: row; gap: 20px">
+          <h2>Cadastro de Animais</h2>
+          <!-- <span class="close"> &times;</span>-->
+        </div>
+        <br />
+        <p style="font-size: 14px; margin-bottom: 30px">
+          Insira todas as informações abaixo para <br />disponibilizar um animal
+          para adoção.
+        </p>
+
+        <form
+          id="form_pet"
+          style="
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+            width: 350px;
+            margin-inline: auto;
+          "
+        >
+          <div class="input-group">
+            <input
+              type="text"
+              data-index="new"
+              id="name_pet"
+              class="input-pet"
+              required
+            />
+            <label for="name_pet" class="input-label">Nome do Pet</label>
+          </div>
+
+          <div class="input-group">
+            <input type="text" id="description" class="input-pet" required />
+            <label for="description" class="input-label">Descrição</label>
+          </div>
+
+          <div class="input-group">
+            <input type="text" id="guardian_name" class="input-pet" required />
+            <label for="guardian_name" class="input-label">
+              Respopnsável
+            </label>
+          </div>
+
+          <div class="input-group">
+            <input
+              type="number"
+              class="input-pet"
+              id="guardian_contact"
+              required
+            />
+            <label for="guardian_contact" class="input-label">
+              Whatsapp para contato
+            </label>
+            <p style="font-size: 14px; margin-top: 5px">
+              Esteja ciente que pessoas interessadas em adotar esse animal, irá
+              entrar em contato com você via whatsapp ou ligação.
+            </p>
+          </div>
+
+          <div style="display: block; margin-top: 10px">
+            Foto:
+            <input type="file" id="photo" placeholder="foto" required />
+          </div>
+        </form>
+        <br />
+        <button type="submit" id="savePet">Cadastrar animal para adoção</button>
+        <br />
+        <a class="close"> Cancelar </a>
+      </div>
+    </div>
+    <footer style="margin: 20px 20px 20px 20px; font-size: 10px">
+      Javascript CRUD by
+      <a href="https://cinth010.github.io/cinthia-links/">Cínthia Bezerra</a>
+    </footer>
+    <script src="./js/main.js"></script>
   </body>
 </html>

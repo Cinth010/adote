@@ -1,13 +1,13 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
+
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-  font-family: 'Inter', sans-serif;
-  font-family: 'Lexend Deca', sans-serif;
+  font-family: 'Poppins', sans-serif;
   list-style: none;
   text-decoration: none;
 }
-
 :root {
   --main-blue: #16c3de;
   --secondary-blue: #0dadc5;
@@ -20,45 +20,45 @@
 
 body {
   color: var(--dark);
-  background-color: var(--white);
+  background: var(--white);
 }
-.navgation {
+.navigation {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 18px 32px;
+  padding: 18px 24px;
   box-shadow: 0 0.1rem 0.5rem #ccc;
   width: 100%;
-  background-color: var(--white);
+  background: var(--white);
   transition: all 0.5s;
   position: fixed;
 }
-
-.navgation .logo {
-  color: var(--main-blue);
-  font-size: 1.5rem;
-  font-weight: 600px;
-  display: flex;
-  margin-inline: auto;
+.navigation .logo {
+  color: var(--red);
+  font-size: 1.7rem;
+  font-weight: 600;
 }
-.navgation ul {
+.logo span {
+  color: var(--dark);
+}
+.navigation ul {
   display: flex;
-  flex-direction: row;
   align-items: center;
   gap: 5rem;
 }
-
-.navgation ul li a {
+.navigation ul li a {
   color: var(--dark);
-  font-size: 15px;
-  font-weight: 600;
+  font-size: 17px;
+  font-weight: 500;
   transition: all 0.5s;
 }
-
-.navgation ul li a:hover {
-  color: var(--secondary-blue);
+.navigation ul li a:hover {
+  color: var(--main-blue);
 }
-
+.navigation i {
+  cursor: pointer;
+  font-size: 1.5rem;
+}
 .menu {
   cursor: pointer;
   display: none;
@@ -66,58 +66,61 @@ body {
 .menu .bar {
   display: block;
   width: 28px;
-  height: 2px;
+  height: 3px;
   border-radius: 3px;
   background: var(--dark);
   margin: 5px auto;
-  transition: all 0.3;
+  transition: all 0.3s;
 }
-
+.menu .bar:nth-child(1),
+.menu .bar:nth-child(3) {
+  background: var(--dark);
+}
 .home {
   width: 100%;
   height: 100vh;
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 0 5%;
+  padding: 0px 10%;
 }
-
 .home-text {
-  width: 37rem;
- 
+  max-width: 37rem;
 }
 .home-text .text-h4 {
   font-size: 1.5rem;
   color: var(--main-blue);
-  margin-bottom: 2rem;
+  margin-bottom: 1rem;
 }
-
 .home-text .text-h1 {
-  font-size: 3rem;
-  margin-bottom: 2rem;
-  line-height: 3rem;
+  font-size: 4rem;
+  margin-bottom: 1rem;
+  line-height: 4rem;
 }
-
 .home-text p {
   margin-bottom: 4rem;
 }
-
-.btn {
+.home-btn {
   padding: 15px 45px;
-  background-color: var(--main-blue);
+  background: var(--main-blue);
   color: var(--white);
   border-radius: 10px;
-  font-weight: 500;
+  font-weight: 700;
   transition: all 0.5s;
 }
-
-.btn:hover {
-  background-color: var(--secondary-blue);
+.home-btn:hover {
+  background: var(--secondary-blue);
 }
-
-@media (max-width: 750px) {
+.home-img img {
+  width: 100%;
+}
+@media (max-width: 785px) {
+  body {
+    height: max-content;
+    margin-bottom: 2rem;
+  }
   .navigation {
-    padding: 18px 20px;
+    padding: 18px 16px;
   }
   .menu {
     display: block;
@@ -150,17 +153,11 @@ body {
   }
   /*main*/
   .home {
-    width: 100%;
-    height: max-content;
-    padding: 100px;
+    padding: 100px 2%;
     flex-direction: column;
     text-align: center;
     overflow: hidden;
-    gap: 2rem;
-  }
-  .home-text {
-    width: 30rem;
-    padding: 0 30px;
+    gap: 5rem;
   }
   .home .text-h4 {
     font-size: 15px;
@@ -169,14 +166,10 @@ body {
     font-size: 2.5rem;
     line-height: 3rem;
   }
-
-  .btn {
-    width: 60%;
-  }
   .home p {
     font-size: 15px;
   }
   .home-img {
-    width: 80%;
+    width: 60%;
   }
 }

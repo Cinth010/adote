@@ -1,10 +1,10 @@
-@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=ABeeZee&display=swap');
 
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-  font-family: 'Poppins', sans-serif;
+  font-family: 'ABeeZee', sans-serif;
   list-style: none;
   text-decoration: none;
 }
@@ -17,16 +17,16 @@
   --green: #58a764;
   --red: #e77979;
 }
-
 body {
   color: var(--dark);
   background: var(--white);
 }
+
 .navigation {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 18px 24px;
+  padding: 18px 40px;
   box-shadow: 0 0.1rem 0.5rem #ccc;
   width: 100%;
   background: var(--white);
@@ -34,7 +34,7 @@ body {
   position: fixed;
 }
 .navigation .logo {
-  color: var(--red);
+  color: var(--main-blue);
   font-size: 1.7rem;
   font-weight: 600;
 }
@@ -74,7 +74,7 @@ body {
 }
 .menu .bar:nth-child(1),
 .menu .bar:nth-child(3) {
-  background: var(--dark);
+  background: var(--main-blue);
 }
 .home {
   width: 100%;
@@ -114,13 +114,12 @@ body {
 .home-img img {
   width: 100%;
 }
+
+
+
 @media (max-width: 785px) {
-  body {
-    height: max-content;
-    margin-bottom: 2rem;
-  }
   .navigation {
-    padding: 18px 16px;
+    padding: 18px 20px;
   }
   .menu {
     display: block;

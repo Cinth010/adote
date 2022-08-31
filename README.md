@@ -1,5 +1,5 @@
 # Adote
-
+![Imagem da aplicação](cover.jpg)
 > Plataforma de cadastro de animais domésticos para adoção.
 
 ## 📑 Sobre o projeto
